@@ -2,8 +2,10 @@
 # define PHONEBOOK_HPP
 
 #include "contact.hpp"
-#include <_types.h>
+#include <stdint.h>
 #include <iostream>
+#include <sstream>
+#include <cstdint>
 
 #define ADD 1
 #define SEARCH 2
@@ -13,6 +15,7 @@ class Phonebook
 {
 	public:
 		Phonebook();
+		Contact askContactInfo(void);
 		void	addContact(Contact contact);
 		void	getNewContactInformation();
 		void	ShowAllContacts();
