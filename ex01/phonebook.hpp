@@ -9,6 +9,7 @@
 
 #define ADD 1
 #define SEARCH 2
+#define LIST 3
 #define EXIT 4
 
 class Phonebook

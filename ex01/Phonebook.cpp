@@ -1,4 +1,6 @@
 #include "phonebook.hpp"
+#include <cstdio>
+#include <cstdlib>
 
 static int resolveOptions(std::string &reference);
 
@@ -8,11 +10,11 @@ Phonebook::Phonebook()
 }
 
 Contact Phonebook::askContactInfo() {
-	std::istringstream firstName;
-	std::istringstream lastName;
-	std::istringstream age;
+	std::string firstName;
+	std::string lastName;
+	std::string age;
 	uint64_t _age;
-	std::istringstream phoneNumber;
+	std::string phoneNumber;
 	uint64_t _phoneNumber;
 
 	std::cout << "First name: ";
@@ -23,11 +25,11 @@ Contact Phonebook::askContactInfo() {
 
 	std::cout << "age: ";
 	std::cin >> age;
-	age >> _age;
+  _age = strtoul(age.c_str(), NULL, 10);
 
 	std::cout << "phoneNumber: ";
 	std::cin >> phoneNumber;
-	phoneNumber >> _phoneNumber;
+  _phoneNumber = strtoul(phoneNumber.c_str(), NULL, 10);
 
 	Contact contact(firstName, lastName, _age, _phoneNumber);
 	return (contact);
@@ -56,10 +58,13 @@ int Phonebook::Execute(std::string command) {
 	switch (resolveOptions(command)) {
 		case ADD:
 			std::cout << "choose: ADD" << std::endl;
-			this->askContactInfo();
-			break;
+			this->addContact(this->askContactInfo());
+      break;
 		case SEARCH:
 			std::cout << "choose: SEARCH" << std::endl;
+			break;
+		case LIST:
+			std::cout << "choose: LIST" << std::endl;
 			break;
 		case EXIT:
 			std::cout << "choose: EXIT" << std::endl;
@@ -75,6 +80,9 @@ static int resolveOptions(std::string &reference) {
 	}
 	else if (reference.compare("search") == 0) {
 		return (SEARCH);
+	}
+	else if (reference.compare("list") == 0) {
+		return (LIST);
 	}
 	else if (reference.compare("exit") == 0) {
 		return (EXIT);

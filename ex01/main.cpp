@@ -8,6 +8,7 @@ int main(void) {
 		std::cout << "type a command" << std::endl;
 		std::cout << "ADD - add contact to phonebook" << std::endl;
 		std::cout << "SEARCH - search contact on phonebook" << std::endl;
+		std::cout << "LIST - list all contacts in phonebook" << std::endl;
 		std::cout << "EXIT - end the program" << std::endl;
 		std::cin >> command;
 		phonebook.Execute(command);
