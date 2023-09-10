@@ -1,6 +1,6 @@
 SOURCE	=	megaphone.cpp
 
-CC		=	g++
+CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror
 CPPFLAGS=	-std=c++98
 

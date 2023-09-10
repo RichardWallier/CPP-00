@@ -1,6 +1,6 @@
 SOURCE	=	main.cpp Contact.cpp Phonebook.cpp
 
-CC		=	g++
+CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror
 CPPFLAGS=	-std=c++98
 
