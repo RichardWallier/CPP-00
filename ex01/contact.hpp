@@ -8,18 +8,18 @@ class Contact
 {
 	public:
 		Contact();
-		Contact(std::string firstName, std::string lastName, uint8_t age, uint64_t phoneNumber);
-		std::string GetFullName();
-		void getFirstName();
-		void getLastName();
+		Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber);
+		std::string getFullName();
+    std::string getFirstName();
+    std::string getLastName();
 		void getAge();
-		void present();
+		void present(std::string preText);
 
 	private:
 		std::string _firstName;
 		std::string _lastName;
-		uint8_t _age;
-    uint64_t _phoneNumber;
+		std::string _nickname;
+    std::string _phoneNumber;
 };
 
 #endif // !CONTACT_HPP

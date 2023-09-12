@@ -1,6 +1,5 @@
-#include "phonebook.hpp"
-#include <cstdio>
-#include <cstdlib>
+#include "Phonebook.hpp"
+#include <string>
 
 static int resolveOptions(std::string &reference);
 
@@ -12,26 +11,22 @@ Phonebook::Phonebook()
 Contact Phonebook::askContactInfo() {
 	std::string firstName;
 	std::string lastName;
-	std::string age;
-	uint64_t _age;
+	std::string nickname;
 	std::string phoneNumber;
-	uint64_t _phoneNumber;
 
 	std::cout << "First name: ";
-	std::cin >> firstName;
+  std::getline(std::cin, firstName, '\n');
 
 	std::cout << "Last name: ";
-	std::cin >> lastName;
+  std::getline(std::cin, lastName, '\n');
 
-	std::cout << "age: ";
-	std::cin >> age;
-  _age = strtoul(age.c_str(), NULL, 10);
+	std::cout << "Nickname: ";
+  std::getline(std::cin, nickname, '\n');
 
 	std::cout << "phoneNumber: ";
-	std::cin >> phoneNumber;
-  _phoneNumber = strtoul(phoneNumber.c_str(), NULL, 10);
+  std::getline(std::cin, phoneNumber, '\n');
 
-	Contact contact(firstName, lastName, _age, _phoneNumber);
+	Contact contact(firstName, lastName, nickname, phoneNumber);
 	return (contact);
 }
 
@@ -42,10 +37,24 @@ void Phonebook::addContact(Contact contact) {
 		this->index++;
 }
 
-void Phonebook::ShowAllContacts() {
-	for(int j = 0; j <= this->index; j++)
-		this->_contacts[j].present();
+std::string Phonebook::askContactName() {
+	std::string firstName;
+
+	std::cout << "First name: ";
+  std::getline(std::cin, firstName, '\n');
+
+	return (firstName);
 }
+
+void Phonebook::searchContact(std::string name) {
+  for (int index = 0; index < this->index; index++) {
+    std::string actualName = this->_contacts[index].getFirstName();
+    if (actualName.compare(name) == 0)
+      return (_contacts[index].present(std::to_string(index)));
+  }
+
+}
+
 
 int Phonebook::Execute(std::string command) {
 	if (command.empty())
@@ -62,12 +71,11 @@ int Phonebook::Execute(std::string command) {
       break;
 		case SEARCH:
 			std::cout << "choose: SEARCH" << std::endl;
-			break;
-		case LIST:
-			std::cout << "choose: LIST" << std::endl;
+      this->searchContact(this->askContactName());
 			break;
 		case EXIT:
 			std::cout << "choose: EXIT" << std::endl;
+      exit(0);
 			break;
 	}
 	return (0);
@@ -80,9 +88,6 @@ static int resolveOptions(std::string &reference) {
 	}
 	else if (reference.compare("search") == 0) {
 		return (SEARCH);
-	}
-	else if (reference.compare("list") == 0) {
-		return (LIST);
 	}
 	else if (reference.compare("exit") == 0) {
 		return (EXIT);

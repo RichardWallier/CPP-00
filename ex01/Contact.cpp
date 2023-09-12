@@ -1,19 +1,24 @@
-#include "contact.hpp"
+#include "Contact.hpp"
 
 Contact::Contact() { }
 
-Contact::Contact(std::string firstName, std::string lastName, uint8_t age, uint64_t phoneNumber) {
+Contact::Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber) {
 	this->_firstName = firstName;
 	this->_lastName = lastName;
-	this->_age = age;
+	this->_nickname = nickname;
   this->_phoneNumber = phoneNumber;
 }
 
-std::string Contact::GetFullName() {
+std::string Contact::getFullName() {
 	return(_firstName + _lastName);
 }
 
-void Contact::present() {
-	std::cout << this->_firstName << " " << this->_lastName << " " << (unsigned)this->_age << this->_phoneNumber << std::endl;
+std::string Contact::getFirstName() {
+	return(_firstName);
+}
+
+void Contact::present(std::string preText) {
+  std::string space = "     ";
+  std::cout << preText << space << this->_firstName << space << _lastName << space << _nickname<< std::endl;
 }
 

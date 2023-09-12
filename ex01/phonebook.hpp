@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "contact.hpp"
+#include "Contact.hpp"
 #include <stdint.h>
 #include <iostream>
 #include <sstream>
@@ -9,7 +9,6 @@
 
 #define ADD 1
 #define SEARCH 2
-#define LIST 3
 #define EXIT 4
 
 class Phonebook
@@ -18,8 +17,9 @@ class Phonebook
 		Phonebook();
 		Contact askContactInfo(void);
 		void	addContact(Contact contact);
+    std::string askContactName(void);
+		void	searchContact(std::string name);
 		void	getNewContactInformation();
-		void	ShowAllContacts();
 		int		Execute(std::string command);
 
 	private:
