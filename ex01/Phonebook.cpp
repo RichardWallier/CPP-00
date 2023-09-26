@@ -49,8 +49,10 @@ std::string Phonebook::askContactName() {
 void Phonebook::searchContact(std::string name) {
   for (int index = 0; index < this->index; index++) {
     std::string actualName = this->_contacts[index].getFirstName();
-    if (actualName.compare(name) == 0)
+    if (actualName.compare(name) == 0) {
+      std::cout << "Index   | " << " Name     | " << " Lastname  |" << " Nickname | " << "\n";
       return (_contacts[index].present(std::to_string(index)));
+    }
   }
 
 }
