@@ -46,26 +46,23 @@ void Contact::present(std::string preText) {
     }
   }
   if (firstNameParse.length() < 10) {
-    unsigned int index = 1;
-    firstNameParse = firstNameParse.append(1, '.');
+    unsigned int index = 0;
     while (index < (10 - firstNameParse.length())) {
-      firstNameParse = firstNameParse.append(1, '-');
+      firstNameParse = firstNameParse.append(1, ' ');
     }
   }
   if (lastNameParse.length() < 10) {
-    unsigned int index = 1;
-    lastNameParse = lastNameParse.append(1, '.');
+    unsigned int index = 0;
     while (index < (10 - lastNameParse.length())) {
-      lastNameParse = lastNameParse.append(1, '-');
+      lastNameParse = lastNameParse.append(1, ' ');
     }
   }
   if (nicknameParse.length() < 10) {
-    unsigned int index = 1;
-    nicknameParse = nicknameParse.append(1, '.');
+    unsigned int index = 0;
     while (index < (10 - nicknameParse.length())) {
-      nicknameParse = nicknameParse.append(1, '-');
+      nicknameParse = nicknameParse.append(1, ' ');
     }
   }
-  std::cout << preText<< " " << firstNameParse << "   " << lastNameParse << "    " << nicknameParse << std::endl;
+  std::cout << preText<< " " << firstNameParse << "  " << lastNameParse << "  " << nicknameParse << std::endl;
 }
 
