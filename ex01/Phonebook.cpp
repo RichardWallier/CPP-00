@@ -1,5 +1,4 @@
 #include "Phonebook.hpp"
-#include <string>
 
 static int resolveOptions(std::string &reference);
 
@@ -51,7 +50,10 @@ void Phonebook::searchContact(std::string name) {
     std::string actualName = this->_contacts[index].getFirstName();
     if (actualName.compare(name) == 0) {
       std::cout << "Index   | " << " Name     | " << " Lastname  |" << " Nickname | " << "\n";
-      return (_contacts[index].present(std::to_string(index)));
+      std::stringstream ss;
+      ss << index;
+      std::string word = ss.str();
+      return (_contacts[index].present(word));
     }
   }
 

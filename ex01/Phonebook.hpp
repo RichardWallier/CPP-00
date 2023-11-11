@@ -2,10 +2,8 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
-#include <stdint.h>
 #include <iostream>
 #include <sstream>
-#include <cstdint>
 
 #define ADD 1
 #define SEARCH 2
